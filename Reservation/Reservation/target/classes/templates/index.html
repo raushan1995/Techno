@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Techno-Reservation</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div class="container my-2">
+    <h1>Reservations List</h1>   <!-- name of the index page -->
+
+    <!-- url for user form which is in controller class -->
+    <a th:href="@{/showNewReservationForm}" class="btn btn-primary btn-sm mb-3"> Add Reservation </a>
+
+    <table border="1" class="table table-striped table-responsive-md">   <!-- for responsive table -->
+        <thead>
+        <tr>                        <!-- fields -->
+            <th> Id</th>
+            <th> TypeOfReservation</th>
+            <th> ModeOfTransaction</th>
+            <th> DateOfReservation</th>
+            <th> TenureOfReservation</th>
+
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>       <!-- for fetch data from database -->
+        <tr th:each="reservation : ${listReservations}">
+            <td th:text="${reservation.id}"></td>
+            <td th:text="${reservation.typeOfReservation}"></td>
+            <td th:text="${reservation.modeOfTransaction}"></td>
+            <td th:text="${reservation.dateOfReservation}"></td>
+            <td th:text="${reservation.tenureOfReservation}"></td>
+
+
+
+            <!-- url for update details by id and button will be primary -->
+            <td> <a th:href="@{/showFormForUpdate/{id}(id=${reservation.id})}" class="btn btn-primary">Update</a>
+                <!-- url for delete details by id and button will be danger -->
+                <a th:href="@{/deleteReservation/{id}(id=${reservation.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
