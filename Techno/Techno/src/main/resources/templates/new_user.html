@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Techno</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h1>Techno</h1>    <!-- name of user form -->
+    <hr>
+    <h2>Save User</h2>
+
+    <!-- url for save user details which is from controller class and method will be post -->
+    <form action="#" th:action="@{/saveUser}" th:object="${user}" method="POST">
+        <!-- these are the fields of form -->
+        <input type="hidden" th:field="*{id}" placeholder="User id" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{userName}" placeholder=" Name" class="form-control mb-4 col-4">
+
+        <input type="date" th:field="*{dateOfBirth}" placeholder=" DateOfBirth" class="form-control mb-4 col-4">
+
+        <input type="email" th:field="*{emailId}" placeholder=" EmailId" class="form-control mb-4 col-4">
+
+        <input type="number" th:field="*{phoneNumber}" placeholder="PhoneNumber" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{gender}" placeholder="Gender" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{userStatus}" placeholder="Status" class="form-control mb-4 col-4">
+
+       <input type="text" th:field="*{address}" placeholder="Address" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{reservationId}" placeholder="ReservationId" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Save User</button>   <!-- this is submit button -->
+    </form>
+
+    <hr>
+
+    <a th:href="@{/}"> Back to User List</a>   <!--  this is link for go to index or user details page -->
+</div>
+</body>
+
+</html>
